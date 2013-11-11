@@ -4,11 +4,32 @@
   </head>
   <body>
   	<h1> ROCK-PAPER-SCISSORS-SPOCK-LIZARD </h1>
+
+  	<h3> Choose! </h3>
   	<ul>
-  		<li> Rock </li>
-  		<li> Paper </li>
-  		<li> Scissors </li>
-  		<li> Spock </li>
-  		<li> Lizard </li>
+  		<button data-pick='rock'> Rock </button>
+  		<button data-pick='paper'> Paper </button>
+  		<button data-pick='scissors'> Scissors </button>
+  		<button data-pick='spock'> Spock </button>
+  		<button data-pick='lizard'> Lizard </button>
+
+  		<script src="lib/RockPaperScissors.js"> </script>
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  		<script>
+  			var Michael = new Player('Michael');
+  			var Jack = new Player('Jack');
+  			var game = new Game(Michael, Jack);
+
+  			$('button').on('click', function() {
+
+  				options = ['rock', 'paper', 'scissors', 'spock', 'lizard']
+  				var option = options[Math.floor(Math.random()*options.length)]
+
+  				Michael.picks(option);
+  				Jack.picks($(this).data('pick'));
+  				alert(game.winner(Michael, Jack));
+  			})
+
+  		</script>
   </body>
-</htm>
+</html>

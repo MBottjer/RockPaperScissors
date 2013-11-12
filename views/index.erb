@@ -1,7 +1,7 @@
 <html>
   <head>
   	<title> ROCK-PAPER-SCISSORS-SPOCK-LIZARD </title>
-    <link href="./application.css" rel="stylesheet" type="text/css">
+    <link href="application.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
   </head>
   <body>
@@ -16,8 +16,10 @@
   		<button data-pick='lizard'> Lizard </button>
       <div class="messagetwo"></div>
       <div class="message"></div>
+      <p>Win count: &nbsp;<div class="wins"></div> &nbsp;</p>
+      <p>&nbsp;Computer Win count: &nbsp; <div class="compwin"></div></p>
 
-  		<script src="lib/RockPaperScissors.js"> </script>
+  		<script src="javascript/lib/RockPaperScissors.js"> </script>
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   		<script>
   			var Michael = new Player('Michael');
@@ -31,17 +33,20 @@
 
   				Michael.picks(option);
   				Jack.picks($(this).data('pick'));
-          $('.message').html(game.outcome(Michael, Jack));
-          $('.messagetwo').html(game.winner(Michael, Jack));
-  			})
-       
-        $("button").click(function(){
-          $("div").animate({
-          left:'270px',
-          height:'=50px',
-          width:'=50px'
-         });
-        });
+		        $('.message').html(game.outcome(Michael, Jack));
+		        $('.messagetwo').html(game.winner(Michael, Jack));
+
+		        $.post('/win', { result: game.winner(Michael, Jack) }, function(wins) {
+		        	$('.wins').html(wins)
+		        })
+
+		        $.post('/computerwin', { result: game.winner(Michael, Jack) }, function(comp) {
+		  			$('.compwin').html(comp)
+		  			console.log(wins)
+
+		        })
+
+		    })
 
   		</script>
   </body>

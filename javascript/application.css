@@ -1,0 +1,27 @@
+body {
+  background-image: url('./skull.jpg');
+  background-size: 100%;
+  font-family: 'Audiowide', cursive;
+  color: #FFFFFF ;
+  text-align: center;
+}
+
+button {
+  background: transparent;
+  font-family: 'Audiowide', cursive;
+  color: #FFFFFF
+}
+
+button:hover {
+  background-color: #1E90FF
+}
+
+.message {
+  margin-top: 50px;
+  color:#1E90FF;
+  font-size: 400%;
+  position: absolute;
+  top:200px;
+  left:500px;
+}
+

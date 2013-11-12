@@ -14,6 +14,7 @@
   		<button data-pick='scissors'> Scissors </button>
   		<button data-pick='spock'> Spock </button>
   		<button data-pick='lizard'> Lizard </button>
+      <div class="messagetwo"></div>
       <div class="message"></div>
 
   		<script src="lib/RockPaperScissors.js"> </script>
@@ -30,16 +31,17 @@
 
   				Michael.picks(option);
   				Jack.picks($(this).data('pick'));
-          $('.message').html(game.winner(Michael, Jack));
+          $('.message').html(game.outcome(Michael, Jack));
+          $('.messagetwo').html(game.winner(Michael, Jack));
   			})
        
-      $("button").click(function(){
-      $("div").animate({
-      left:'260px',
-      height:'=50px',
-      width:'=50px'
-    });
-  });
+        $("button").click(function(){
+          $("div").animate({
+          left:'270px',
+          height:'=50px',
+          width:'=50px'
+         });
+        });
 
   		</script>
   </body>

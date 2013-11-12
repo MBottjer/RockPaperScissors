@@ -18,7 +18,7 @@ function Game (player1, player2) {
                 } ;
 }
 
-Game.prototype.winner = function (player1, player2) {
+Game.prototype.outcome = function (player1, player2) {
 
     if (this.samePick()){
       return null ;
@@ -27,11 +27,24 @@ Game.prototype.winner = function (player1, player2) {
     if (this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) != -1) {
      n = this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick);
      return this.player1.pick + " " + this.PAIRS[this.player1.pick]['verb'][n] + " " + this.player2.pick;
-     // return this.player1;
     }  
     else {
       x = this.PAIRS[this.player2.pick]['beats'].indexOf(this.player1.pick);
       return this.player2.pick + " " + this.PAIRS[this.player2.pick]['verb'][x] + " " + this.player1.pick;
+    }
+} 
+
+Game.prototype.winner = function (player1, player2) {
+
+    if (this.samePick()){
+      return "It's a Draw!" ;
+    }
+ 
+    if (this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) != -1) {
+     return "You win!";
+    }  
+    else {
+      return "The Computer wins!";
     }
 } 
 

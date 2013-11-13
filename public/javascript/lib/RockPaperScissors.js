@@ -6,9 +6,9 @@ Player.prototype.picks = function (pick) {
     this.pick = pick ;
   }
 
-function Game (player1, player2) {
-  this.player1 = player1
-  this.player2 = player2
+function Game (computer, player) {
+  this.computer = computer
+  this.player = player
 
   this.PAIRS = {'rock': {'beats': ['scissors', 'lizard'], 'verb': ['smashes', 'crushes']},
                 'scissors': {'beats': ['paper', 'lizard'], 'verb': ['cuts', 'decapitates']}, 
@@ -24,32 +24,39 @@ Game.prototype.outcome = function (player1, player2) {
       return null ;
     }
  
-    if (this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) != -1) {
-     n = this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick);
-     return this.player1.pick + " " + this.PAIRS[this.player1.pick]['verb'][n] + " " + this.player2.pick;
+    if (this.PAIRS[this.computer.pick]['beats'].indexOf(this.player.pick) != -1) {
+     n = this.PAIRS[this.computer.pick]['beats'].indexOf(this.player.pick);
+     return this.computer.pick + " " + this.PAIRS[this.computer.pick]['verb'][n] + " " + this.player.pick;
     }  
     else {
-      x = this.PAIRS[this.player2.pick]['beats'].indexOf(this.player1.pick);
-      return this.player2.pick + " " + this.PAIRS[this.player2.pick]['verb'][x] + " " + this.player1.pick;
+      x = this.PAIRS[this.player.pick]['beats'].indexOf(this.computer.pick);
+      return this.player.pick + " " + this.PAIRS[this.player.pick]['verb'][x] + " " + this.computer.pick;
     }
 } 
 
-Game.prototype.winner = function (player1, player2) {
+Game.prototype.winner = function (computer, player) {
 
     if (this.samePick()){
       return "It's a Draw!" ;
     }
  
-    if (this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) != -1) {
-     return "You win!";
+    if (this.PAIRS[this.computer.pick]['beats'].indexOf(this.player.pick) != -1) {
+     return "The Computer wins!";
     }  
     else {
-      return "The Computer wins!";
+      return "You win!";
     }
 } 
 
 Game.prototype.samePick = function () {
-  return this.player1.pick == this.player2.pick ;
+  return this.computer.pick == this.player.pick ;
 }
+
+Game.prototype.randomGenerator = function () {
+  var options = ['rock', 'paper', 'scissors', 'spock', 'lizard'];
+  return options[Math.floor(Math.random()*options.length)];
+}
+
+
 
 

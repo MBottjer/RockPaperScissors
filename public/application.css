@@ -4,6 +4,7 @@ body {
   font-family: 'Audiowide', cursive;
   color: #FFFFFF ;
   text-align: center;
+  margin-top: 50px;
 }
 
 button {
@@ -38,5 +39,9 @@ p {
 
 .compwin {
   display: inline-block;
+}
+
+#instruction { 
+  margin-top: 150px;
 }
 

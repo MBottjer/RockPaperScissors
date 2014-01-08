@@ -13,8 +13,12 @@ To illustrate the rules, please have a look at the diagram below:
 
 This application was created using the following gems:
 
-gem 'sinatra'
-gem 'shotgun'
-gem 'cucumber-sinatra'
-gem 'data_mapper'
-gem 'dm-postgres-adapter'
+sinatra
+
+shotgun
+
+cucumber-sinatra
+
+data_mapper
+
+dm-postgres-adapter
